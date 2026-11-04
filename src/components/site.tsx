@@ -20,7 +20,7 @@ const nav = [
 
 export function CopperButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} className="clip-hex inline-flex items-center gap-2 bg-copper px-8 py-3 font-display text-sm font-semibold uppercase tracking-widest text-primary-foreground shadow-copper transition hover:brightness-110">
+    <a href={href} className="inline-flex items-center gap-2 rounded-full bg-copper px-8 py-3 font-display text-sm font-semibold uppercase tracking-widest text-primary-foreground shadow-copper transition hover:brightness-110">
       {children}
     </a>
   );

@@ -44,7 +44,7 @@ function Index() {
       </div>
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 md:grid-cols-2">
-        <img src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="clip-hex w-full object-cover" />
+        <img src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="rounded-3xl w-full object-cover shadow-copper" />
         <div>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-primary">Welcome</p>
           <h2 className="mt-3 text-4xl font-bold">Leaders in sustainable metal recycling</h2>
@@ -62,8 +62,8 @@ function Index() {
           <h2 className="text-center text-4xl font-bold">What we <span className="text-copper">recycle</span></h2>
           <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.slice(0, 6).map((s, i) => (
-              <div key={s.t} className="group bg-card p-8 transition hover:bg-muted">
-                <span className="font-display text-3xl text-copper">0{i + 1}</span>
+            <div key={s.t} className="group rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper hover:ring-primary">
+              <span className="font-display text-3xl text-copper">0{i + 1}</span>
                 <h3 className="mt-3 text-xl">{s.t}</h3>
                 <p className="mt-2 text-muted-foreground">{s.d}</p>
               </div>
@@ -80,7 +80,7 @@ function Index() {
             { icon: Truck, t: "Fast pickups", d: "We come to homes, businesses and job sites across Sydney." },
             { icon: Leaf, t: "Eco-driven", d: "Strict environmental and safety standards in every load." },
           ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="border-t-2 border-primary bg-card p-8">
+            <div key={t} className="rounded-3xl border-t-2 border-primary bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper">
               <Icon className="h-10 w-10 text-primary" />
               <h3 className="mt-4 text-xl">{t}</h3>
               <p className="mt-2 text-muted-foreground">{d}</p>
