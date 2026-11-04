@@ -176,3 +176,4 @@
   .reveal-pending { opacity: 1; transform: none; }
   .lift-panel:hover, .photo-finish:hover, .copper-button:hover { transform: none; }
 }
+.glass-panel.nav-menu-panel { background: var(--card); }

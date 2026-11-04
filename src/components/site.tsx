@@ -52,7 +52,7 @@ export function Header() {
                 {n.label} <ChevronDown className="nav-chevron h-4 w-4" />
               </Link>
               <div className="nav-menu absolute left-1/2 top-full pt-4">
-                <div className="glass-panel w-72 rounded-2xl border bg-card/95 p-2">
+                <div className="glass-panel nav-menu-panel w-72 rounded-2xl border p-2">
                   {SERVICES.map((s, i) => (
                     <Link key={s.t} to="/services" hash={`service-${i}`} className="block rounded-xl px-4 py-2.5 text-sm text-muted-foreground transition hover:bg-primary/10 hover:text-primary">
                       {s.t}
