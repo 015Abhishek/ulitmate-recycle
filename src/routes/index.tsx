@@ -32,7 +32,7 @@ function Index() {
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">Fair prices meet responsible recycling. Residential, commercial and industrial pickups across Sydney.</p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <CopperButton href={BIZ.tel}>Get a free quote</CopperButton>
-            <Link to="/services" className="font-display uppercase tracking-widest text-secondary underline-offset-8 hover:underline">Our services →</Link>
+            <Link to="/services" className="font-display uppercase tracking-widest text-foreground underline-offset-8 hover:underline">Our services →</Link>
           </div>
         </div>
       </section>
