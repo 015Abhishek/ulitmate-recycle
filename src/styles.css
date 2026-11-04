@@ -108,5 +108,5 @@
 @utility bg-hero-fade { background-image: var(--gradient-hero); }
 @utility text-copper { background-image: var(--gradient-copper); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @utility shadow-copper { box-shadow: var(--shadow-copper); }
-@utility clip-hex { clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); }
+
 @layer base { body { font-family: var(--font-sans); } h1,h2,h3,h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; } }
