@@ -1,4 +1,4 @@
 # Website finishing
-- [ ] Add translucent surfaces and polish existing light styling.
-- [ ] Add scroll reveals and interaction animations with reduced-motion support.
-- [ ] Verify all pages and mobile navigation.
+- [x] Add translucent surfaces and polish existing light styling.
+- [x] Add scroll reveals and interaction animations with reduced-motion support.
+- [x] Verify all pages and mobile navigation.
