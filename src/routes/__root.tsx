@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Header, Footer } from "../components/site";
+import { Header, Footer, MotionEffects } from "../components/site";
 
 function NotFoundComponent() {
   return (
@@ -122,6 +122,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Header />
       <main><Outlet /></main>
+      <MotionEffects />
       <Footer />
     </QueryClientProvider>
   );

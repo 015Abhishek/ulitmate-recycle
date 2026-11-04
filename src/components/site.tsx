@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logo from "@/assets/ultimate_logo.png.asset.json";
 
@@ -20,15 +22,22 @@ const nav = [
 
 export function CopperButton({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <a href={href} className="inline-flex items-center gap-2 rounded-full bg-copper px-8 py-3 font-display text-sm font-semibold uppercase tracking-widest text-primary-foreground shadow-copper transition hover:brightness-110">
+    <a href={href} className="copper-button inline-flex items-center gap-2 rounded-full bg-copper px-8 py-3 font-display text-sm font-semibold uppercase text-primary-foreground shadow-copper">
       {children}
     </a>
   );
 }
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 12);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+    <header className={`site-header sticky top-0 z-50 border-b ${scrolled ? "is-scrolled" : ""}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo.url} alt="Ultimate Metal Recyclers" className="h-14 w-14 object-contain" />
@@ -38,7 +47,7 @@ export function Header() {
         </Link>
         <nav className="hidden gap-8 md:flex">
           {nav.map((n) => (
-            <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="font-display text-sm uppercase tracking-widest text-muted-foreground transition hover:text-foreground [&.active]:text-primary">
+            <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="nav-link font-display text-sm uppercase text-muted-foreground transition hover:text-foreground [&.active]:text-primary">
               {n.label}
             </Link>
           ))}
@@ -49,7 +58,7 @@ export function Header() {
       </div>
       <nav className="flex justify-center gap-5 border-t border-border py-2 md:hidden">
         {nav.map((n) => (
-          <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="font-display text-xs uppercase tracking-widest text-muted-foreground [&.active]:text-primary">{n.label}</Link>
+          <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="nav-link font-display text-xs uppercase text-muted-foreground [&.active]:text-primary">{n.label}</Link>
         ))}
       </nav>
     </header>
@@ -102,14 +111,40 @@ export function ContactList() {
 
 export function PageHero({ title, sub }: { title: string; sub: string }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-card py-20">
+    <section className="page-hero relative overflow-hidden border-b border-border py-16 md:py-20">
       <div className="absolute inset-x-0 top-0 h-1 bg-copper" />
-      <div className="mx-auto max-w-7xl px-4">
+      <div data-reveal className="relative mx-auto max-w-7xl px-4">
         <h1 className="text-5xl font-bold md:text-6xl">{title}</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{sub}</p>
       </div>
     </section>
   );
+}
+
+export function MotionEffects() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const elements = document.querySelectorAll<HTMLElement>("main [data-reveal]");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.remove("reveal-pending");
+        entry.target.classList.add("reveal-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    elements.forEach((element, index) => {
+      element.style.setProperty("--reveal-delay", `${(index % 3) * 80}ms`);
+      element.classList.add("reveal-pending");
+      observer.observe(element);
+    });
+    return () => {
+      observer.disconnect();
+      elements.forEach((element) => element.classList.remove("reveal-pending", "reveal-visible"));
+    };
+  }, [pathname]);
+  return null;
 }
 
 export const SERVICES = [
