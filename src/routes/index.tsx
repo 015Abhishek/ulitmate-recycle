@@ -92,6 +92,25 @@ function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 py-24">
+        <h2 className="text-center text-4xl font-bold">Our work in <span className="text-copper">pictures</span></h2>
+        <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">Real pickups, sorted metals and processed loads — every step handled at our yard.</p>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { src: truck, alt: "Collection truck loading household scrap in a Sydney street", t: "Door-to-door pickup" },
+            { src: aluminium, alt: "Baled aluminium cans ready for recycling", t: "Sorted & baled metals" },
+            { src: carScrap, alt: "Scrap car bodies processed at the yard", t: "Cars processed responsibly" },
+          ].map(({ src, alt, t }) => (
+            <figure key={t} className="group overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border">
+              <div className="overflow-hidden">
+                <img src={src} alt={alt} width={1024} height={1024} loading="lazy" className="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <figcaption className="px-6 py-4 font-display text-sm uppercase tracking-widest text-muted-foreground">{t}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className="bg-steel py-16">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 text-secondary-foreground md:flex-row">
           <h2 className="text-3xl font-bold md:text-4xl">Your metal has value. Turn it into cash.</h2>
