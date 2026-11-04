@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Truck, DollarSign, Leaf } from "lucide-react";
 import hero from "@/assets/hero_yard.jpg";
 import copper from "@/assets/copper_close.jpg";
+import truck from "@/assets/scrap_truck.jpg";
+import aluminium from "@/assets/aluminium_scrap.jpg";
+import carScrap from "@/assets/car_scrap.jpg";
 import { BIZ, CopperButton, SERVICES } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -60,7 +63,7 @@ function Index() {
       <section className="border-y border-border bg-card py-24">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-center text-4xl font-bold">What we <span className="text-copper">recycle</span></h2>
-          <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.slice(0, 6).map((s, i) => (
             <div key={s.t} className="group rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper hover:ring-primary">
               <span className="font-display text-3xl text-copper">0{i + 1}</span>
