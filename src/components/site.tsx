@@ -38,7 +38,7 @@ export function Header() {
   }, []);
   return (
     <header className={`site-header fixed inset-x-0 top-0 z-50 ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-header)] px-4 py-1.5 mx-3 md:mx-auto backdrop-blur-md header-bar">
+      <div className="mt-3 flex max-w-7xl items-center justify-between rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-header)] px-4 py-1.5 mx-3 xl:mx-auto backdrop-blur-md header-bar">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo.url} alt="Ultimate Metal Recyclers" className="h-14 w-14 object-contain" />
           <span className="hidden font-display text-lg uppercase leading-tight sm:block">

@@ -91,7 +91,7 @@
   --gradient-hero: linear-gradient(90deg, oklch(0.98 0.003 250 / 0.96) 0%, oklch(0.98 0.003 250 / 0.8) 50%, oklch(0.98 0.003 250 / 0.1) 100%);
   --shadow-copper: 0 12px 40px -12px oklch(0.64 0.13 50 / 0.5);
   --glass-surface: oklch(1 0 0 / 0.64);
-  --glass-header: oklch(0.99 0.002 250 / 0.74);
+  --glass-header: oklch(0.99 0.002 250 / 0.5);
   --glass-border: oklch(1 0 0 / 0.85);
   --glass-line: oklch(0.65 0.012 250 / 0.12);
   --shadow-glass: 0 12px 36px -20px oklch(0.25 0.015 250 / 0.22);
