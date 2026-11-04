@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
 import logo from "@/assets/ultimate_logo.png.asset.json";
 
 export const BIZ = {
@@ -37,8 +37,8 @@ export function Header() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   return (
-    <header className={`site-header sticky top-0 z-50 border-b ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
+    <header className={`site-header fixed inset-x-0 top-0 z-50 ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-header)] px-4 py-1.5 mx-3 md:mx-auto backdrop-blur-md header-bar">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo.url} alt="Ultimate Metal Recyclers" className="h-14 w-14 object-contain" />
           <span className="hidden font-display text-lg uppercase leading-tight sm:block">
@@ -46,17 +46,32 @@ export function Header() {
           </span>
         </Link>
         <nav className="hidden gap-8 md:flex">
-          {nav.map((n) => (
-            <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="nav-link font-display text-sm uppercase text-muted-foreground transition hover:text-foreground [&.active]:text-primary">
+          {nav.map((n) => n.to === "/services" ? (
+            <div key={n.to} className="nav-drop relative">
+              <Link to={n.to} activeOptions={{ exact: true }} className="nav-link flex items-center gap-1 font-display text-sm uppercase text-foreground/80 transition hover:text-foreground [&.active]:text-primary">
+                {n.label} <ChevronDown className="nav-chevron h-4 w-4" />
+              </Link>
+              <div className="nav-menu absolute left-1/2 top-full pt-4">
+                <div className="glass-panel w-72 rounded-2xl border p-2">
+                  {SERVICES.map((s, i) => (
+                    <Link key={s.t} to="/services" hash={`service-${i}`} className="block rounded-xl px-4 py-2.5 text-sm text-muted-foreground transition hover:bg-primary/10 hover:text-primary">
+                      {s.t}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="nav-link font-display text-sm uppercase text-foreground/80 transition hover:text-foreground [&.active]:text-primary">
               {n.label}
             </Link>
           ))}
         </nav>
-        <a href={BIZ.tel} className="flex items-center gap-2 font-display text-sm text-primary">
+        <a href={BIZ.tel} className="copper-button flex items-center gap-2 rounded-full bg-copper px-4 py-2 font-display text-sm text-primary-foreground shadow-copper">
           <Phone className="h-4 w-4" /> <span className="hidden sm:inline">{BIZ.phone}</span>
         </a>
       </div>
-      <nav className="flex justify-center gap-5 border-t border-border py-2 md:hidden">
+      <nav className="mx-3 mt-2 flex justify-center gap-5 rounded-full border border-[color:var(--glass-border)] bg-[color:var(--glass-header)] py-2 backdrop-blur-md md:hidden">
         {nav.map((n) => (
           <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="nav-link font-display text-xs uppercase text-muted-foreground [&.active]:text-primary">{n.label}</Link>
         ))}
@@ -111,7 +126,7 @@ export function ContactList() {
 
 export function PageHero({ title, sub }: { title: string; sub: string }) {
   return (
-    <section className="page-hero relative overflow-hidden border-b border-border py-16 md:py-20">
+    <section className="page-hero relative overflow-hidden border-b border-border pb-16 pt-40 md:pb-20 md:pt-36">
       <div className="absolute inset-x-0 top-0 h-1 bg-copper" />
       <div data-reveal className="relative mx-auto max-w-7xl px-4">
         <h1 className="text-5xl font-bold md:text-6xl">{title}</h1>

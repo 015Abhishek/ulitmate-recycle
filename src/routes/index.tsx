@@ -26,10 +26,10 @@ const metals = ["Copper", "Brass", "Aluminium", "Stainless Steel", "Steel", "Lea
 function Index() {
   return (
     <>
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <img src={hero} alt="Scrap metal yard in Sydney at sunset" width={1920} height={1088} className="hero-photo absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-fade" />
-        <div data-reveal className="relative mx-auto w-full max-w-7xl px-4 py-24">
+        <div data-reveal className="relative mx-auto w-full max-w-7xl px-4 pb-24 pt-44 md:pt-36">
           <p className="mb-4 font-display text-sm uppercase tracking-[0.3em] text-primary">Sydney's trusted metal recyclers</p>
           <h1 className="max-w-3xl text-5xl font-bold leading-[1.05] md:text-7xl">
             Cash for scrap.<br /><span className="text-copper">Care for the planet.</span>
