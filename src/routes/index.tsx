@@ -14,6 +14,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Sydney scrap metal recycling. Best prices for copper, aluminium, steel, brass and car scrap. Fast pickups from St Marys." },
       { property: "og:title", content: "Ultimate Metal Recyclers | Cash for Scrap Sydney" },
       { property: "og:description", content: "Best scrap metal prices in Sydney with fast, eco-friendly collection." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -25,9 +27,9 @@ function Index() {
   return (
     <>
       <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-        <img src={hero} alt="Scrap metal yard in Sydney at sunset" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={hero} alt="Scrap metal yard in Sydney at sunset" width={1920} height={1088} className="hero-photo absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-hero-fade" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24">
+        <div data-reveal className="relative mx-auto w-full max-w-7xl px-4 py-24">
           <p className="mb-4 font-display text-sm uppercase tracking-[0.3em] text-primary">Sydney's trusted metal recyclers</p>
           <h1 className="max-w-3xl text-5xl font-bold leading-[1.05] md:text-7xl">
             Cash for scrap.<br /><span className="text-copper">Care for the planet.</span>
@@ -47,8 +49,8 @@ function Index() {
       </div>
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 md:grid-cols-2">
-        <img src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="rounded-3xl w-full object-cover shadow-copper" />
-        <div>
+        <img data-reveal src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="photo-finish rounded-3xl w-full object-cover" />
+        <div data-reveal>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-primary">Welcome</p>
           <h2 className="mt-3 text-4xl font-bold">Leaders in sustainable metal recycling</h2>
           <p className="mt-5 text-muted-foreground">We collect, process and recycle all ferrous and non-ferrous metals — copper, brass, aluminium, stainless steel, steel and lead. Every job is handled safely, efficiently and responsibly.</p>
@@ -60,12 +62,12 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-card py-24">
+      <section className="border-y border-border bg-secondary/40 py-24">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-center text-4xl font-bold">What we <span className="text-copper">recycle</span></h2>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.slice(0, 6).map((s, i) => (
-            <div key={s.t} className="group rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper hover:ring-primary">
+            <div data-reveal key={s.t} className="glass-panel lift-panel group rounded-3xl border p-8">
               <span className="font-display text-3xl text-copper">0{i + 1}</span>
                 <h3 className="mt-3 text-xl">{s.t}</h3>
                 <p className="mt-2 text-muted-foreground">{s.d}</p>
@@ -83,7 +85,7 @@ function Index() {
             { icon: Truck, t: "Fast pickups", d: "We come to homes, businesses and job sites across Sydney." },
             { icon: Leaf, t: "Eco-driven", d: "Strict environmental and safety standards in every load." },
           ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="rounded-3xl border-t-2 border-primary bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper">
+            <div data-reveal key={t} className="glass-panel lift-panel rounded-3xl border-t-2 border-primary p-8">
               <Icon className="h-10 w-10 text-primary" />
               <h3 className="mt-4 text-xl">{t}</h3>
               <p className="mt-2 text-muted-foreground">{d}</p>
@@ -101,11 +103,11 @@ function Index() {
             { src: aluminium, alt: "Baled aluminium cans ready for recycling", t: "Sorted & baled metals" },
             { src: carScrap, alt: "Scrap car bodies processed at the yard", t: "Cars processed responsibly" },
           ].map(({ src, alt, t }) => (
-            <figure key={t} className="group overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border">
+            <figure data-reveal key={t} className="glass-panel lift-panel group overflow-hidden rounded-3xl ring-1 ring-border">
               <div className="overflow-hidden">
                 <img src={src} alt={alt} width={1024} height={1024} loading="lazy" className="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
               </div>
-              <figcaption className="px-6 py-4 font-display text-sm uppercase tracking-widest text-muted-foreground">{t}</figcaption>
+              <figcaption className="px-6 py-4 font-display text-sm uppercase text-muted-foreground">{t}</figcaption>
             </figure>
           ))}
         </div>
