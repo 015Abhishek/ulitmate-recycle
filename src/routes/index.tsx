@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Truck, DollarSign, Leaf } from "lucide-react";
 import hero from "@/assets/hero_yard.jpg";
 import copper from "@/assets/copper_close.jpg";
+import truck from "@/assets/scrap_truck.jpg";
+import aluminium from "@/assets/aluminium_scrap.jpg";
+import carScrap from "@/assets/car_scrap.jpg";
 import { BIZ, CopperButton, SERVICES } from "@/components/site";
 
 export const Route = createFileRoute("/")({
@@ -44,7 +47,7 @@ function Index() {
       </div>
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 md:grid-cols-2">
-        <img src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="clip-hex w-full object-cover" />
+        <img src={copper} alt="Sorted copper pipes and brass fittings" width={1200} height={912} loading="lazy" className="rounded-3xl w-full object-cover shadow-copper" />
         <div>
           <p className="font-display text-sm uppercase tracking-[0.3em] text-primary">Welcome</p>
           <h2 className="mt-3 text-4xl font-bold">Leaders in sustainable metal recycling</h2>
@@ -60,10 +63,10 @@ function Index() {
       <section className="border-y border-border bg-card py-24">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-center text-4xl font-bold">What we <span className="text-copper">recycle</span></h2>
-          <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.slice(0, 6).map((s, i) => (
-              <div key={s.t} className="group bg-card p-8 transition hover:bg-muted">
-                <span className="font-display text-3xl text-copper">0{i + 1}</span>
+            <div key={s.t} className="group rounded-3xl bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper hover:ring-primary">
+              <span className="font-display text-3xl text-copper">0{i + 1}</span>
                 <h3 className="mt-3 text-xl">{s.t}</h3>
                 <p className="mt-2 text-muted-foreground">{s.d}</p>
               </div>
@@ -80,11 +83,30 @@ function Index() {
             { icon: Truck, t: "Fast pickups", d: "We come to homes, businesses and job sites across Sydney." },
             { icon: Leaf, t: "Eco-driven", d: "Strict environmental and safety standards in every load." },
           ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="border-t-2 border-primary bg-card p-8">
+            <div key={t} className="rounded-3xl border-t-2 border-primary bg-card p-8 shadow-sm ring-1 ring-border transition hover:-translate-y-1 hover:shadow-copper">
               <Icon className="h-10 w-10 text-primary" />
               <h3 className="mt-4 text-xl">{t}</h3>
               <p className="mt-2 text-muted-foreground">{d}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-24">
+        <h2 className="text-center text-4xl font-bold">Our work in <span className="text-copper">pictures</span></h2>
+        <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">Real pickups, sorted metals and processed loads — every step handled at our yard.</p>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { src: truck, alt: "Collection truck loading household scrap in a Sydney street", t: "Door-to-door pickup" },
+            { src: aluminium, alt: "Baled aluminium cans ready for recycling", t: "Sorted & baled metals" },
+            { src: carScrap, alt: "Scrap car bodies processed at the yard", t: "Cars processed responsibly" },
+          ].map(({ src, alt, t }) => (
+            <figure key={t} className="group overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border">
+              <div className="overflow-hidden">
+                <img src={src} alt={alt} width={1024} height={1024} loading="lazy" className="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <figcaption className="px-6 py-4 font-display text-sm uppercase tracking-widest text-muted-foreground">{t}</figcaption>
+            </figure>
           ))}
         </div>
       </section>

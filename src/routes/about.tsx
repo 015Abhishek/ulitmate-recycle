@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import copper from "@/assets/copper_close.jpg";
+import truck from "@/assets/scrap_truck.jpg";
 import { PageHero } from "@/components/site";
 
 export const Route = createFileRoute("/about")({
@@ -25,7 +26,10 @@ function About() {
           <p>Our mission is to deliver reliable, eco-conscious, high-value solutions for every customer — giving metals a second life while paying fair prices.</p>
           <p>We operate with strict adherence to environmental standards and safety regulations, so every process meets the highest industry benchmarks.</p>
         </div>
-        <img src={copper} alt="Copper and brass ready for recycling" width={1200} height={912} loading="lazy" className="clip-hex w-full object-cover" />
+        <div className="grid gap-6">
+          <img src={copper} alt="Copper and brass ready for recycling" width={1200} height={912} loading="lazy" className="w-full rounded-3xl object-cover shadow-copper" />
+          <img src={truck} alt="Our collection truck picking up household scrap" width={1024} height={1024} loading="lazy" className="w-full rounded-3xl object-cover shadow-copper" />
+        </div>
       </section>
     </>
   );
